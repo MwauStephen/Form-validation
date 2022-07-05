@@ -14,10 +14,11 @@ body {
   background-color: #3f3f3f;
 }
 .app {
+  font-size: 1.6rem;
   width: 90%;
   max-width: 50rem;
   padding: 1rem;
   border-radius: 1.2rem;
   background-color: white;
-  margin: 3rem auto;
+  margin: 20rem auto;
 }

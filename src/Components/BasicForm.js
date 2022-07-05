@@ -18,6 +18,7 @@ const BasicForm = () => {
         <label htmlFor="name">E-Mail Address</label>
         <input type="text" id="name" />
       </div>
+
       <div className={styles["form-actions"]}>
         <button>Submit</button>
       </div>
