@@ -88,7 +88,7 @@ const BasicForm = () => {
   return (
     <form onSubmit={submitFormHandler}>
       <div className={nameInputClasses}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Full Names:</label>
         <input
           type="text"
           id="name"
@@ -99,7 +99,7 @@ const BasicForm = () => {
         {nameIsInValid && <p>Please enter correct name!!</p>}
       </div>
       <div className={passwordInputClasses}>
-        <label htmlFor="pass">Password</label>
+        <label htmlFor="pass">Password:</label>
         <input
           type="password"
           id="pass"
@@ -110,7 +110,7 @@ const BasicForm = () => {
         {passwordIsInValid && <p>Password must be at least 6 characters!!!</p>}
       </div>
       <div className={emailInputClasses}>
-        <label htmlFor="email">E-Mail Address</label>
+        <label htmlFor="email">E-Mail Address:</label>
         <input
           type="email"
           id="email"
