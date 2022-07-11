@@ -96,7 +96,7 @@ const BasicForm = () => {
           value={enteredName}
           onBlur={nameBlurHandler}
         />
-        {nameIsInValid && <p>Please enter correct name!!</p>}
+        {nameIsInValid && <p>Name must not be empty !!</p>}
       </div>
       <div className={passwordInputClasses}>
         <label htmlFor="pass">Password:</label>
@@ -107,7 +107,7 @@ const BasicForm = () => {
           value={enteredPassword}
           onBlur={passwordBlurHandler}
         />
-        {passwordIsInValid && <p>Password must be at least 6 characters!!!</p>}
+        {passwordIsInValid && <p>Password must be at least 6 characters !!!</p>}
       </div>
       <div className={emailInputClasses}>
         <label htmlFor="email">E-Mail Address:</label>
