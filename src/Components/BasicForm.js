@@ -46,6 +46,12 @@ const BasicForm = () => {
     setEmailTouched(false);
   };
 
+  let formIsValid = false;
+
+  if (nameIsValid && emailIsValid && passwordIsValid) {
+    formIsValid = true;
+  }
+
   const nameInputHandler = (event) => {
     setEnteredName(event.target.value);
   };
@@ -116,7 +122,7 @@ const BasicForm = () => {
       </div>
 
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
