@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "./BasicForm.module.css";
+import "./BasicForm.css";
+// import styles from "./BasicForm.module.css";
 
 const BasicForm = () => {
   const [enteredName, setEnteredName] = useState("");
@@ -14,13 +15,13 @@ const BasicForm = () => {
   // overall form validation
 
   const nameIsValid = enteredName.trim() !== "";
-  const nameInValid = !nameIsValid && nameTouched;
+  const nameIsInValid = !nameIsValid && nameTouched;
 
   const emailIsValid = enteredEmail.includes("@");
-  const emailInValid = !enteredEmail && emailTouched;
+  const emailIsInValid = !emailIsValid && emailTouched;
 
-  const passwordIsValid = enteredPassword.trim().length === 6;
-  const passwordInValid = !passwordIsValid && passwordTouched;
+  const passwordIsValid = enteredPassword.trim().length >= 6;
+  const passwordIsInValid = !passwordIsValid && passwordTouched;
 
   const submitFormHandler = (event) => {
     event.preventDefault();
@@ -36,8 +37,13 @@ const BasicForm = () => {
     console.log(enteredName, enteredEmail, enteredPassword);
     // clear user inputs
     setEnteredName("");
+    setNameTouched(false);
+
     setEnteredPassword("");
+    setPasswordTouched(false);
+
     setEnteredEmail("");
+    setEmailTouched(false);
   };
 
   const nameInputHandler = (event) => {
@@ -61,33 +67,43 @@ const BasicForm = () => {
     setEmailTouched(true);
   };
 
+  const nameInputClasses = nameIsInValid
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailInputClasses = emailIsInValid
+    ? "form-control invalid"
+    : "form-control";
+
+  const passwordInputClasses = passwordIsInValid
+    ? "form-control invalid"
+    : "form-control";
+
   return (
     <form onSubmit={submitFormHandler}>
-      <div className={styles["control-group"]}>
-        <div className={styles["form-control"]}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={nameInputHandler}
-            value={enteredName}
-            onBlur={nameBlurHandler}
-          />
-          {/* <p>Please enter correct name!!</p> */}
-        </div>
-        <div className={styles["form-control"]}>
-          <label htmlFor="pass">Password</label>
-          <input
-            type="password"
-            id="pass"
-            onChange={passwordInputHandler}
-            value={enteredPassword}
-            onBlur={passwordBlurHandler}
-          />
-          {/* <p>Password must be at least 6 characters!!!</p> */}
-        </div>
+      <div className={nameInputClasses}>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          onChange={nameInputHandler}
+          value={enteredName}
+          onBlur={nameBlurHandler}
+        />
+        {nameIsInValid && <p>Please enter correct name!!</p>}
       </div>
-      <div className={styles["form-control"]}>
+      <div className={passwordInputClasses}>
+        <label htmlFor="pass">Password</label>
+        <input
+          type="password"
+          id="pass"
+          onChange={passwordInputHandler}
+          value={enteredPassword}
+          onBlur={passwordBlurHandler}
+        />
+        {passwordIsInValid && <p>Password must be at least 6 characters!!!</p>}
+      </div>
+      <div className={emailInputClasses}>
         <label htmlFor="email">E-Mail Address</label>
         <input
           type="email"
@@ -96,10 +112,10 @@ const BasicForm = () => {
           value={enteredEmail}
           onBlur={emailBlurHandler}
         />
-        {/* <p>Invalid email !!!</p> */}
+        {emailIsInValid && <p>Invalid email !!!</p>}
       </div>
 
-      <div className={styles["form-actions"]}>
+      <div className="form-actions">
         <button>Submit</button>
       </div>
     </form>
