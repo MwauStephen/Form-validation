@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./BasicForm.css";
 // import styles from "./BasicForm.module.css";
 
-const BasicForm = () => {
+const BasicForm = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -44,6 +44,9 @@ const BasicForm = () => {
 
     setEnteredEmail("");
     setEmailTouched(false);
+
+    // sedning form data to app.js through lifting states.
+    props.sendFormData(enteredName, enteredEmail, enteredPassword);
   };
 
   let formIsValid = false;
