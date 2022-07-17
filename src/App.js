@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import postRequestHook from "./Components/Hooks/use-https-request";
+import MessageModal from "./Components/Modal/MessageModal";
 import BasicForm from "./Components/BasicForm";
 
 const App = () => {
@@ -29,15 +30,6 @@ const App = () => {
         }
       );
       console.log(response);
-
-      const data = await response.json();
-      const transformedData = {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-      };
-
-      console.log(transformedData);
     };
     fetchData();
   };
@@ -53,6 +45,7 @@ const App = () => {
   return (
     <div className="app">
       <BasicForm sendFormData={formHandler} />
+      <MessageModal />
     </div>
   );
 };
